@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org/"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Power Company Home Page</title>
+</head>
+<body>
+
+<h2>Power Company Home Page</h2>
+<hr>
+<p>
+    Welcome to the Power company home page!
+
+</p>
+
+    <form th:action="@{/logout}" method="POST">
+
+        <input type="submit" value="Logout">
+    </form>
+</body>
+</html>
