@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="https://www.thymeleaf.org/"
+      xmlns:sec = "https://www.thymeleaf.org/extras/spring-security"
 >
 <head>
     <meta charset="UTF-8">
@@ -12,8 +13,32 @@
 <hr>
 <p>
     Welcome to the Power company home page!
-
 </p>
+
+<hr>
+<!--    display username and role-->
+<p>
+    User: <span sec:authentication = "principal.username"></span>
+    <br><br>
+    Role(s): <span sec:authentication="principal.authorities"></span>
+</p>
+
+
+<!-- Add a link to point to /leaders ... this is for the managers-->
+<div sec:authorize="hasRole('MANAGER')">
+<p>
+    <a th:href="@{/leaders}">Leadership Meeting </a>
+    (Only for Manager peeps)
+</p>
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+<p>
+   <a th:href="@{/systems}">IT Systems Meeting</a>
+    (Only for ADMIN peeps)
+</p>
+</div>
+<hr>
 
     <form th:action="@{/logout}" method="POST">
 
